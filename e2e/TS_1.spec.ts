@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 
-test("SuccessFully generate an image", async ({ page, baseURL }) => {
-  await page.goto("http://localhost:3000/home");
+test("SuccessFully generate an image", async ({ page }) => {
+  await page.goto("/");
   await page.setInputFiles('input[type="file"]', "e2e/fixtures/test-image.png");
   await page.getByTestId("prompt-input").fill("Hello this is a test prompt");
   await expect(page.getByTestId("summary-prompt")).toBeVisible();
@@ -21,7 +21,7 @@ test("SuccessFully generate an image", async ({ page, baseURL }) => {
   );
 });
 
-test("Show latest 5 generated images ", async ({ page, baseURL }) => {
+test("Show latest 5 generated images ", async ({ page }) => {
   let id = 0;
   await page.route("**/api/generate", (route, request) => {
     const postData = JSON.parse(request.postData()!);
@@ -40,7 +40,7 @@ test("Show latest 5 generated images ", async ({ page, baseURL }) => {
     });
   });
 
-  await page.goto("http://localhost:3000/home");
+  await page.goto("/");
 
   for (let i = 0; i < 6; i++) {
     await page.setInputFiles(
@@ -79,7 +79,7 @@ test("Should retry 3 times before showing error ", async ({
     });
   });
 
-  await page.goto("/home");
+  await page.goto("/");
   await page.setInputFiles('input[type="file"]', "e2e/fixtures/test-image.png");
   await page
     .getByTestId("prompt-input")
