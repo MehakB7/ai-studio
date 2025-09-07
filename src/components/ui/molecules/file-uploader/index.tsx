@@ -31,6 +31,7 @@ export const FileUploader = forwardRef<FileUploaderRef, FileUploaderProps>(
         onDrop={handleDrop}
         onDragOver={handleDragOver}
         data-testid="area-file-upload"
+        role="button"
       >
         <input
           ref={fileInputRef}
