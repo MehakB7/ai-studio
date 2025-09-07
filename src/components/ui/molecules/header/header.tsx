@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <header className="flex items-center justify-between p-4 border-b border-border bg-card/50 backdrop-blur-sm">
       <div className="flex items-center space-x-3">
-        <Link href="/" data-testid="link-home">
+        <Link href="/" data-testid="link-home" aria-label="home">
           <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
             ⚡
           </div>
