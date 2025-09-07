@@ -9,7 +9,9 @@ interface UploadedImage {
 }
 
 export function useImageUpload() {
-  const [uploadedImage, setUploadedImage] = useState<UploadedImage | null>(null);
+  const [uploadedImage, setUploadedImage] = useState<UploadedImage | null>(
+    null,
+  );
   const [isProcessing, setIsProcessing] = useState(false);
 
   const handleFileUpload = async (file: File) => {

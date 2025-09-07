@@ -14,24 +14,21 @@ export function useHistory() {
     }
   }, []);
 
-  const addEntry = useCallback(
-    (entry: ImageGenerationResponse) => {
-      if(!entry){
-        return;
+  const addEntry = useCallback((entry: ImageGenerationResponse) => {
+    if (!entry) {
+      return;
+    }
+
+    setHistory((prev) => {
+      let updated = [entry, ...prev];
+      if (updated.length > 5) {
+        updated = updated.slice(0, 5);
       }
 
-      setHistory((prev) => {
-        let updated = [entry, ...prev];
-        if (updated.length > 5) {
-          updated = updated.slice(0, 5);
-        }
-
-        localStorage.setItem("history", JSON.stringify(updated));
-        return updated;
-      });
-    },
-    []
-  );
+      localStorage.setItem("history", JSON.stringify(updated));
+      return updated;
+    });
+  }, []);
 
   return { history, addEntry };
 }

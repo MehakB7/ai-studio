@@ -13,11 +13,11 @@ test("SuccessFully generate an image", async ({ page }) => {
   await expect(page.getByText("PreviewThis is your AI")).toBeVisible();
   await expect(page.getByTestId("result-prompt")).toBeVisible();
   await expect(page.getByTestId("result-prompt")).toHaveText(
-    "Hello this is a test prompt"
+    "Hello this is a test prompt",
   );
   await expect(page.getByTestId("history-item-0")).toBeVisible();
   await expect(page.getByTestId("history-prompt-0")).toContainText(
-    "Hello this is a test prompt"
+    "Hello this is a test prompt",
   );
 });
 
@@ -45,20 +45,20 @@ test("Show latest 5 generated images ", async ({ page }) => {
   for (let i = 0; i < 6; i++) {
     await page.setInputFiles(
       'input[type="file"]',
-      "e2e/fixtures/test-image.png"
+      "e2e/fixtures/test-image.png",
     );
     await page
       .getByTestId("prompt-input")
       .fill(`Hello this is a test prompt No: - ${i + 1}`);
     await page.getByTestId("button-submit").click();
     await expect(
-      page.getByTestId(`history-item-${Math.min(i, 4)}`)
+      page.getByTestId(`history-item-${Math.min(i, 4)}`),
     ).toBeVisible();
     await page.getByRole("button", { name: "Close" }).click();
   }
   await expect(page.getByTestId("history-item-4")).toBeVisible();
   await expect(page.getByTestId("history-prompt-4")).toContainText(
-    "Hello this is a test prompt No: - 2"
+    "Hello this is a test prompt No: - 2",
   );
 });
 

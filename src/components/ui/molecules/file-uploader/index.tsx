@@ -10,7 +10,7 @@ type FileUploaderProps = {
   handleDrop: (event: React.DragEvent<HTMLDivElement>) => void;
   handleDragOver: (event: React.DragEvent<HTMLDivElement>) => void;
   error?: string;
-}
+};
 
 export const FileUploader = forwardRef<FileUploaderRef, FileUploaderProps>(
   ({ handleFileSelect, handleDrop, handleDragOver, error }, ref) => {
@@ -49,10 +49,17 @@ export const FileUploader = forwardRef<FileUploaderRef, FileUploaderProps>(
             PNG or JPG up to 10MB
           </p>
         </div>
-        {error && <p className="text-xs text-destructive mt-2" data-testid="upload-error">{error}</p>}
+        {error && (
+          <p
+            className="text-xs text-destructive mt-2"
+            data-testid="upload-error"
+          >
+            {error}
+          </p>
+        )}
       </div>
     );
-  }
+  },
 );
 
 FileUploader.displayName = "FileUploader";

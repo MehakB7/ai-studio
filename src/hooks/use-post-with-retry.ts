@@ -22,14 +22,18 @@ type PostOptions = {
 
 export function usePostWithRetry() {
   const [response, setResponse] = useState<ImageGenerationResponse | null>(
-    null
+    null,
   );
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const controllerRef = useRef<AbortController | null>(null);
 
   const postData = useCallback(
-    async (data: ImageGeneratorDTO, options: PostOptions = {}, retries = Config.NETWORK_RETRY) => {
+    async (
+      data: ImageGeneratorDTO,
+      options: PostOptions = {},
+      retries = Config.NETWORK_RETRY,
+    ) => {
       setLoading(true);
       setError(null);
       setResponse(null);
@@ -76,7 +80,7 @@ export function usePostWithRetry() {
         }
       }
     },
-    []
+    [],
   );
 
   const abort = useCallback(() => {

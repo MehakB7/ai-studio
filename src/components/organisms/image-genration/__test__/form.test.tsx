@@ -44,7 +44,7 @@ describe("ImagePromptForm", () => {
     const option = await screen.getByRole("option", { name: /Streetwear/i });
     fireEvent.click(option);
     expect(screen.getByTestId("summary-style")).toHaveTextContent(
-      /Streetwear/i
+      /Streetwear/i,
     );
   });
 
@@ -60,7 +60,9 @@ describe("ImagePromptForm", () => {
 
     await waitFor(() => {
       expect(screen.getByTestId("upload-error")).toBeInTheDocument();
-      expect(screen.getByText("Please upload an image smaller than 10MB")).toBeInTheDocument();
+      expect(
+        screen.getByText("Please upload an image smaller than 10MB"),
+      ).toBeInTheDocument();
     });
   });
 });

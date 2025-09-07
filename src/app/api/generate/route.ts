@@ -10,7 +10,7 @@ const generateIds = () => {
 
 const getId = generateIds();
 
-export async function POST(req: Request) {
+export async function POST(req: Request): Promise<Response> {
   const { prompt, imageDataUrl, style } = await req.json();
 
   const interval = Math.floor(Math.random() * 1000) + 1000;
@@ -19,7 +19,7 @@ export async function POST(req: Request) {
     setTimeout(() => {
       if (Math.random() < 0.2) {
         resolve(
-          NextResponse.json({ error: "Model Overloaded" }, { status: 429 })
+          NextResponse.json({ error: "Model Overloaded" }, { status: 429 }),
         );
         return;
       }
@@ -32,7 +32,7 @@ export async function POST(req: Request) {
           style,
           status: "success",
           created_at: new Date(),
-        })
+        }),
       );
     }, interval);
   });
