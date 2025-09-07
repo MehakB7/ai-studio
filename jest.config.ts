@@ -1,17 +1,17 @@
 // eslint-disable-next-line @typescript-eslint/no-require-imports
-const nextJest = require('next/jest')
+const nextJest = require("next/jest");
 
 const createJestConfig = nextJest({
-  dir: './',
-})
+  dir: "./",
+});
 
 const customJestConfig = {
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
-  moduleDirectories: ['node_modules', '<rootDir>/'],
+  setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
+  moduleDirectories: ["node_modules", "<rootDir>/"],
   testEnvironmentOptions: {
-    customExportConditions: [''],
+    customExportConditions: [""],
   },
-  testEnvironment: 'jest-environment-jsdom',
-}
+  testEnvironment: "jest-environment-jsdom",
+};
 
-module.exports = createJestConfig(customJestConfig)
+module.exports = createJestConfig(customJestConfig);

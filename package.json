@@ -6,10 +6,13 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint",
     "prepare": "husky",
     "test": "jest",
-    "e2e": "npx playwright test --workers=1 --ui"
+    "e2e": "npx playwright test --workers=1 --ui",
+    "lint": "next lint",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write ."
+    
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.15",
@@ -42,11 +45,16 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "eslint": "^9",
+    "@typescript-eslint/eslint-plugin": "^8.42.0",
+    "@typescript-eslint/parser": "^8.42.0",
+    "eslint": "^9.35.0",
     "eslint-config-next": "15.5.2",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
     "husky": "^9.1.7",
     "jest": "^30.1.3",
     "jest-environment-jsdom": "^30.1.2",
+    "prettier": "3.6.2",
     "tailwindcss": "^4",
     "ts-jest": "^29.4.1",
     "tw-animate-css": "^1.3.8",
