@@ -20,10 +20,10 @@ const SelectBox = ({
 }: SelectBoxProps) => {
   return (
     <Select value={value} onValueChange={onValueChange}>
-      <SelectTrigger className={className} data-testid={testId}>
+      <SelectTrigger className={className} data-testid={testId} id={id || "select-box"} role="combobox">
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>
-      <SelectContent id={id || "select-box"}>
+      <SelectContent>
         {options.map((option) => (
           <SelectItem
             key={option.value}
