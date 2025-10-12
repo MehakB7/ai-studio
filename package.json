@@ -9,6 +9,11 @@
     "prepare": "husky",
     "test": "jest",
     "e2e": "npx playwright test --workers=1 --ui",
+    "e2e:headless": "npx playwright test",
+    "e2e:debug": "npx playwright test --workers=1 --debug",
+    "e2e:report": "npx playwright show-report",
+    "e2e:codegen": "npx playwright codegen",
+    "e2e:mobile": "npx playwright test --workers=1 --ui --device=Pixel 2",
     "lint": "next lint",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write ."
